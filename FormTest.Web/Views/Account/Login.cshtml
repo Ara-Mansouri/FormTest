@@ -12,18 +12,15 @@
 }
 
 <form asp-action="Login" method="post">
-    <div asp-validation-summary="All" class="text-danger"></div>
-
+    <div asp-validation-summary="All" class="text-danger mb-3"></div>
     <div>
         <label>ایمیل:</label>
         <input asp-for="Email" type="email" class="form-control" />
-        <span asp-validation-for="Email" class="text-danger"></span>
     </div>
 
     <div>
         <label>رمز عبور:</label>
         <input asp-for="Password" type="password" class="form-control" />
-        <span asp-validation-for="Password" class="text-danger"></span>
     </div>
 
     <br />

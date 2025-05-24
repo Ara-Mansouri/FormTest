@@ -16,5 +16,9 @@ namespace FormTest.Web.Controllers
             ViewBag.Name = name;
             return View();
         }
+        public IActionResult Privacy()
+        {
+            return View();
+        }
     }
 }

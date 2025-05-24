@@ -1,7 +1,6 @@
 ﻿using FormTest.Application.DTOs;
 using FormTest.Core.Entities;
 using FormTest.Core.Interfaces;
-using FormTest.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -63,12 +62,12 @@ namespace FormTest.Web.Controllers
             var user = _userRepository.GetByEmailAndPassword(dto.Email, dto.Password);
             if (user == null)
             {
-                ViewBag.ErrorMessage = "کاربری با این مشخصات یافت نشد.";
+                ViewBag.ErrorMessage = "کاربری با این مشخصات یافت نشد";
                 return View(dto);
             }
             if (!user.IsApproved)
             {
-                ViewBag.ErrorMessage = "حساب کاربری شما هنوز تأیید نشده است.";
+                ViewBag.ErrorMessage = "حساب کاربری شما هنوز تأیید نشده است";
                 return View(dto);
             }
             ViewBag.Message = $"خوش آمدید {user.Name}";

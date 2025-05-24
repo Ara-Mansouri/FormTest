@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace FormTest.Application.DTOs
 {
     public class RegisterUserDto
     {
-        [Required]
+        [Required(ErrorMessage = "وارد کردن نام الزامی است")]
         public string Name { get; set; }
 
-        [Required, EmailAddress]
+        [Required(ErrorMessage = "وارد کردن ایمیل الزامی است")]
+        [EmailAddress(ErrorMessage = "ایمیل وارد شده معتبر نیست")]
         public string Email { get; set; }
 
-        [Required, MinLength(6)]
+        [Required(ErrorMessage = "وارد کردن رمز عبور الزامی است")]
+        [MinLength(6, ErrorMessage = "رمز عبور باید حداقل ۶ کاراکتر باشد")]
         public string Password { get; set; }
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FormTest.Core.Entities;
+﻿using FormTest.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace FormTest.Infrastructure.Data

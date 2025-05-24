@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FormTest.Core.Entities
+﻿namespace FormTest.Core.Entities
 {
     public class User
     {
@@ -16,7 +10,7 @@ namespace FormTest.Core.Entities
 
         public string Password { get; set; }
 
-        public string Role { get; set; } = "BrandingUser";
+        public string Role { get; set; } = "User";
 
         public bool IsApproved { get; set; } = false;
 

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
 
@@ -15,8 +10,8 @@ namespace FormTest.Infrastructure.Data
         {
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
 
-            // Use the same connection string here as in appsettings.json
-            optionsBuilder.UseSqlServer("Server=localhost;Database=BrandingCompony;User Id=sa;Password=mansouri;TrustServerCertificate=true;");
+
+            optionsBuilder.UseSqlServer("Server=server-sql;Database=university;User Id=sap;Password=6983;TrustServerCertificate=true;");
 
             return new AppDbContext(optionsBuilder.Options);
         }

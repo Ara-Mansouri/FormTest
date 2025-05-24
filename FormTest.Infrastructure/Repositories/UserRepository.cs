@@ -1,12 +1,6 @@
-﻿using FormTest.Core.Interfaces;
+﻿using FormTest.Core.Entities;
+using FormTest.Core.Interfaces;
 using FormTest.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FormTest.Core.Entities;
 
 namespace FormTest.Infrastructure.Repositories
 {
