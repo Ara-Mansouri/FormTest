@@ -67,7 +67,7 @@ namespace FormTest.Web.Controllers
             ViewBag.Message = $"خوش آمدید {user.Name}";
             HttpContext.Session.SetString("UserName", user.Name);
             HttpContext.Session.SetString("UserEmail", user.Email);
-            HttpContext.Session.SetString("UserRole", user.Role);
+            HttpContext.Session.SetString("UserRole", user.Role.ToString());
             return RedirectToAction("Dashboard", "Home"); 
         }
         public IActionResult Login()
