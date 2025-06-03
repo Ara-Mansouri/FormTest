@@ -1,5 +1,5 @@
-﻿using FormTest.Core.Entities;
-using FormTest.Core.Interfaces;
+﻿using FormTest.Core.Domain.Entities;
+using FormTest.Core.Domain.Interfaces;
 using FormTest.Infrastructure.Data;
 
 namespace FormTest.Infrastructure.Repositories

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FormTest.Application.DTOs
+namespace FormTest.Core.Application.DTOs
 {
     public class RegisterUserDto
     {

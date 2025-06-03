@@ -1,4 +1,6 @@
-using FormTest.Core.Interfaces;
+using FormTest.Core.Application.Contracts;
+using FormTest.Core.Domain.Interfaces;
+using FormTest.Core.Application.Services;
 using FormTest.Infrastructure.Data;
 using FormTest.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +17,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
+
 
 var app = builder.Build();
 

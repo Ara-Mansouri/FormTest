@@ -1,4 +1,4 @@
-﻿using FormTest.Core.Entities;
+﻿using FormTest.Core.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace FormTest.Infrastructure.Data

@@ -1,6 +1,6 @@
-﻿using FormTest.Core.Entities;
+﻿using FormTest.Core.Domain.Entities;
 
-namespace FormTest.Core.Interfaces
+namespace FormTest.Core.Domain.Interfaces
 {
     public interface IUserRepository
     {

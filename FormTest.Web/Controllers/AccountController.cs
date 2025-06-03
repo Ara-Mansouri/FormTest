@@ -1,7 +1,8 @@
-﻿using FormTest.Application.DTOs;
-using FormTest.Core.Entities;
-using FormTest.Core.Interfaces;
+﻿using FormTest.Core.Application.DTOs;
+using FormTest.Core.Domain.Interfaces;
+using FormTest.Core.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
+using FormTest.Core.Application.Contracts;
 
 
 namespace FormTest.Web.Controllers
@@ -9,11 +10,11 @@ namespace FormTest.Web.Controllers
     public class AccountController : Controller
     {
 
-        private readonly IUserRepository _userRepository;
+        private readonly IUserService _UserService;
 
-        public AccountController(IUserRepository userRepository)
+        public AccountController(IUserService UserService)
         {
-            _userRepository = userRepository;
+            _UserService = UserService;
         }
 
         // GET: /Account/Register
@@ -29,20 +30,13 @@ namespace FormTest.Web.Controllers
             {
                 return View(dto);
             }
-            if (_userRepository.GetByEmail(dto.Email) != null)
+            if (_UserService.IsEmailTaken(dto.Email))
             {
                 ModelState.AddModelError("Email", "ایمیل قبلاً ثبت شده است.");
                 return View(dto);
             }
-            var user = new User
-            {
-                Name = dto.Name,
-                Email = dto.Email,
-                Password = dto.Password,
-                IsApproved = false,
-                Role = "BrandingUser"
-            };
-            _userRepository.Add(user);
+
+            _UserService.Register(dto);
             return RedirectToAction("RegisterSuccess");
         }
         public IActionResult RegisterSuccess()
@@ -59,7 +53,7 @@ namespace FormTest.Web.Controllers
             }
 
 
-            var user = _userRepository.GetByEmailAndPassword(dto.Email, dto.Password);
+            var user = _UserService.Login(dto);
             if (user == null)
             {
                 ViewBag.ErrorMessage = "کاربری با این مشخصات یافت نشد";
@@ -74,7 +68,7 @@ namespace FormTest.Web.Controllers
             HttpContext.Session.SetString("UserName", user.Name);
             HttpContext.Session.SetString("UserEmail", user.Email);
             HttpContext.Session.SetString("UserRole", user.Role);
-            return RedirectToAction("Dashboard", "Home"); // change if needed
+            return RedirectToAction("Dashboard", "Home"); 
         }
         public IActionResult Login()
         {

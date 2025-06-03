@@ -1,4 +1,7 @@
-﻿namespace FormTest.Core.Entities
+﻿using FormTest.Core.Domain.Enums;
+
+
+namespace FormTest.Core.Domain.Entities
 {
     public class User
     {
@@ -10,7 +13,7 @@
 
         public string Password { get; set; }
 
-        public string Role { get; set; } = "User";
+        public UserRole Role { get; set; } = UserRole.pending;
 
         public bool IsApproved { get; set; } = false;
 
