@@ -1,15 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using FormTest.Web;
 
 namespace FormTest.Application.DTOs
 {
     public class LoginUserDto
     {
 
-        [Required(ErrorMessage = "ایمیل الزامی است")]
-        [EmailAddress(ErrorMessage = "ایمیل وارد شده معتبر نیست")]
+        [Required(ErrorMessageResourceType = typeof(SharedResource), ErrorMessageResourceName = "EmailRequired")]
+        [EmailAddress(ErrorMessageResourceType = typeof(SharedResource), ErrorMessageResourceName = "InvalidEmail")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "رمز عبور الزامی است")]
+        [Required(ErrorMessageResourceType = typeof(SharedResource), ErrorMessageResourceName = "PasswordRequired")]
         public string Password { get; set; }
     }
 }
