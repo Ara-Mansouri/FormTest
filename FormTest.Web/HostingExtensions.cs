@@ -10,7 +10,10 @@ public static class HostingExtensions
 {
     public static void ConfigureServices(this WebApplicationBuilder builder)
     {
-        builder.Services.AddControllersWithViews();
+        builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+        builder.Services.AddControllersWithViews()
+            .AddViewLocalization()
+            .AddDataAnnotationsLocalization();
 
         builder.Services.AddSession();
 
@@ -37,6 +40,13 @@ public static class HostingExtensions
         app.UseStaticFiles();
 
         app.UseRouting();
+        var supportedCultures = new[] { new System.Globalization.CultureInfo("fa"), new System.Globalization.CultureInfo("en") };
+        app.UseRequestLocalization(new Microsoft.AspNetCore.Localization.RequestLocalizationOptions
+        {
+            DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("fa"),
+            SupportedCultures = supportedCultures,
+            SupportedUICultures = supportedCultures
+        });
         app.UseSession();
         app.UseAuthorization();
 

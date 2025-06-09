@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, ...</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, ...</value>
+  </resheader>
+  <data name="EmailAlreadyRegistered" xml:space="preserve">
+    <value>ایمیل قبلاً ثبت شده است.</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>کاربری با این مشخصات یافت نشد</value>
+  </data>
+  <data name="UserNotApproved" xml:space="preserve">
+    <value>حساب کاربری شما هنوز تأیید نشده است</value>
+  </data>
+  <data name="NameRequired" xml:space="preserve">
+    <value>وارد کردن نام الزامی است</value>
+  </data>
+  <data name="EmailRequired" xml:space="preserve">
+    <value>وارد کردن ایمیل الزامی است</value>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>ایمیل وارد شده معتبر نیست</value>
+  </data>
+  <data name="PasswordRequired" xml:space="preserve">
+    <value>وارد کردن رمز عبور الزامی است</value>
+  </data>
+  <data name="PasswordMinLength" xml:space="preserve">
+    <value>رمز عبور باید حداقل ۶ کاراکتر باشد</value>
+  </data>
+  <data name="WelcomeUser" xml:space="preserve">
+    <value>خوش آمدید {0}</value>
+  </data>
+</root>
