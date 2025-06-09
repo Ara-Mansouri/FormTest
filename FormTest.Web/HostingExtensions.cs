@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
 using FormTest.Web.Services;
+using Microsoft.AspNetCore.Builder;
 
 public static class HostingExtensions
 {
@@ -44,12 +45,14 @@ public static class HostingExtensions
         app.UseRouting();
 
         var supportedCultures = new[] { new CultureInfo("fa"), new CultureInfo("en") };
-        app.UseRequestLocalization(new RequestLocalizationOptions
+        var options = new RequestLocalizationOptions
         {
             DefaultRequestCulture = new RequestCulture("fa"),
             SupportedCultures = supportedCultures,
             SupportedUICultures = supportedCultures
-        });
+        };
+        options.RequestCultureProviders = new[] { new CookieRequestCultureProvider() };
+        app.UseRequestLocalization(options);
         app.UseSession();
         app.UseAuthorization();
 
