@@ -5,12 +5,15 @@ using FormTest.Core.Domain.Interfaces;
 using FormTest.Infrastructure.Data;
 using FormTest.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Localization;
+using System.Globalization;
 
 public static class HostingExtensions
 {
     public static void ConfigureServices(this WebApplicationBuilder builder)
     {
-        builder.Services.AddControllersWithViews();
+        builder.Services.AddLocalization(option => option.ResourcesPath = "Resources");
+        builder.Services.AddControllersWithViews().AddViewLocalization().AddDataAnnotationsLocalization();
 
         builder.Services.AddSession();
 
@@ -37,6 +40,14 @@ public static class HostingExtensions
         app.UseStaticFiles();
 
         app.UseRouting();
+
+        var supportedCultures = new[] { new CultureInfo("fa"), new CultureInfo("en") };
+        app.UseRequestLocalization(new RequestLocalizationOptions
+        {
+            DefaultRequestCulture = new RequestCulture("fa"),
+            SupportedCultures = supportedCultures,
+            SupportedUICultures = supportedCultures
+        });
         app.UseSession();
         app.UseAuthorization();
 

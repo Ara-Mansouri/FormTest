@@ -3,6 +3,7 @@ using FormTest.Core.Domain.Interfaces;
 using FormTest.Core.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using FormTest.Core.Application.Contracts;
+using Microsoft.Extensions.Localization;
 
 
 namespace FormTest.Web.Controllers
@@ -11,10 +12,11 @@ namespace FormTest.Web.Controllers
     {
 
         private readonly IUserService _UserService;
-
-        public AccountController(IUserService UserService)
+        private readonly IStringLocalizer<SharedResource> _localizer;
+        public AccountController(IUserService UserService, IStringLocalizer<SharedResource> Localizer)
         {
             _UserService = UserService;
+            _localizer = Localizer;
         }
 
         // GET: /Account/Register
@@ -32,7 +34,7 @@ namespace FormTest.Web.Controllers
             }
             if (_UserService.IsEmailTaken(dto.Email))
             {
-                ModelState.AddModelError("Email", "ایمیل قبلاً ثبت شده است.");
+                ModelState.AddModelError("Email", _localizer["EmailAlreadyRegistered"]);
                 return View(dto);
             }
 
@@ -56,15 +58,15 @@ namespace FormTest.Web.Controllers
             var user = _UserService.Login(dto);
             if (user == null)
             {
-                ViewBag.ErrorMessage = "کاربری با این مشخصات یافت نشد";
+                ViewBag.ErrorMessage = _localizer["UserNotFound"];
                 return View(dto);
             }
             if (!user.IsApproved)
             {
-                ViewBag.ErrorMessage = "حساب کاربری شما هنوز تأیید نشده است";
+                ViewBag.ErrorMessage = _localizer["UserNotApproved"];
                 return View(dto);
             }
-            ViewBag.Message = $"خوش آمدید {user.Name}";
+            ViewBag.Message = _localizer["WelcomeUser"];
             HttpContext.Session.SetString("UserName", user.Name);
             HttpContext.Session.SetString("UserEmail", user.Email);
             HttpContext.Session.SetString("UserRole", user.Role.ToString());
