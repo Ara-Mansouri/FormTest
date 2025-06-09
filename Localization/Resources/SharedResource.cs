@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using System.Resources;
 
+
 namespace FormTest.Localization.Resources
 {
     /// <summary>
