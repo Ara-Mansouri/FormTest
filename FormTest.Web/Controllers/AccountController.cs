@@ -12,8 +12,8 @@ namespace FormTest.Web.Controllers
     {
 
         private readonly IUserService _UserService;
-        private readonly IStringLocalizer<SharedResource> _localizer;
-        public AccountController(IUserService UserService, IStringLocalizer<SharedResource> Localizer)
+        private readonly ILocalizationService _localizer;
+        public AccountController(IUserService UserService, ILocalizationService Localizer)
         {
             _UserService = UserService;
             _localizer = Localizer;

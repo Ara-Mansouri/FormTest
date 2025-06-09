@@ -1,5 +1,4 @@
-﻿
-using FormTest.Core.Application.Contracts;
+﻿using FormTest.Core.Application.Contracts;
 using FormTest.Core.Application.Services;
 using FormTest.Core.Domain.Interfaces;
 using FormTest.Infrastructure.Data;
@@ -7,6 +6,7 @@ using FormTest.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
+using FormTest.Web.Services;
 
 public static class HostingExtensions
 {
@@ -17,6 +17,7 @@ public static class HostingExtensions
 
         builder.Services.AddSession();
 
+        builder.Services.AddScoped<ILocalizationService, LocalizationService>();
 
         builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -24,6 +25,7 @@ public static class HostingExtensions
 
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<IUserService, UserService>();
+      
 
     }
     public static WebApplication ConfigurePipeline(this WebApplication app)

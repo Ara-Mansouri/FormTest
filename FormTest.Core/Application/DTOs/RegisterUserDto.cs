@@ -4,15 +4,16 @@ namespace FormTest.Core.Application.DTOs
 {
     public class RegisterUserDto
     {
-        [Required(ErrorMessage = "وارد کردن نام الزامی است")]
+        [Required(ErrorMessageResourceName = "NameRequired", ErrorMessageResourceType = typeof(FormTest.Localization.Resources.SharedResource))]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "وارد کردن ایمیل الزامی است")]
-        [EmailAddress(ErrorMessage = "ایمیل وارد شده معتبر نیست")]
+        [Required(ErrorMessageResourceName = "EmailRequired", ErrorMessageResourceType = typeof(FormTest.Localization.Resources.SharedResource))]
+        [EmailAddress(ErrorMessageResourceName = "InvalidEmail", ErrorMessageResourceType = typeof(FormTest.Localization.Resources.SharedResource))]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "وارد کردن رمز عبور الزامی است")]
-        [MinLength(6, ErrorMessage = "رمز عبور باید حداقل ۶ کاراکتر باشد")]
+
+        [Required(ErrorMessageResourceName = "PasswordRequired", ErrorMessageResourceType = typeof(FormTest.Localization.Resources.SharedResource))]
+        [MinLength(6, ErrorMessageResourceName = "PasswordMinLength", ErrorMessageResourceType = typeof(FormTest.Localization.Resources.SharedResource))]
         public string Password { get; set; }
     }
 }

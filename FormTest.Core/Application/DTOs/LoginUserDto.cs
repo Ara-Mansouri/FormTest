@@ -5,11 +5,11 @@ namespace FormTest.Core.Application.DTOs
     public class LoginUserDto
     {
 
-        [Required(ErrorMessage = "ایمیل الزامی است")]
-        [EmailAddress(ErrorMessage = "ایمیل وارد شده معتبر نیست")]
+        [Required(ErrorMessageResourceName = "EmailRequired", ErrorMessageResourceType = typeof(FormTest.Localization.Resources.SharedResource))]
+        [EmailAddress(ErrorMessageResourceName = "InvalidEmail", ErrorMessageResourceType = typeof(FormTest.Localization.Resources.SharedResource))]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "رمز عبور الزامی است")]
+        [Required(ErrorMessageResourceName = "PasswordRequired", ErrorMessageResourceType = typeof(FormTest.Localization.Resources.SharedResource))]
         public string Password { get; set; }
     }
 }
