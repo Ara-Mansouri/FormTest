@@ -10,8 +10,7 @@ namespace FormTest.Infrastructure.Data
         {
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
 
-
-            optionsBuilder.UseSqlServer("Server=server-sql;Database=university;User Id=sap;Password=6983;TrustServerCertificate=true;");
+            optionsBuilder.UseSqlServer("Server=localhost;Database=BrandingCompony;User Id=sa;Password=mansouri;TrustServerCertificate=true;MultipleActiveResultSets=true;");
 
             return new AppDbContext(optionsBuilder.Options);
         }

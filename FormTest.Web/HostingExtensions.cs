@@ -22,11 +22,15 @@ public static class HostingExtensions
 
         builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
+        builder.Services.AddLocalization(options =>
+        {
+            options.ResourcesPath = "Resources"; // این مسیر باید با نام پوشه در پروژه Localization یکی باشه
+        });
 
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<IUserService, UserService>();
-      
+        builder.Services.AddSingleton<ILocalizationService, LocalizationService>();
+
 
     }
     public static WebApplication ConfigurePipeline(this WebApplication app)
@@ -44,15 +48,24 @@ public static class HostingExtensions
 
         app.UseRouting();
 
-        var supportedCultures = new[] { new CultureInfo("fa"), new CultureInfo("en") };
-        var options = new RequestLocalizationOptions
-        {
-            DefaultRequestCulture = new RequestCulture("fa"),
-            SupportedCultures = supportedCultures,
-            SupportedUICultures = supportedCultures
-        };
-        options.RequestCultureProviders = new[] { new CookieRequestCultureProvider() };
-        app.UseRequestLocalization(options);
+        //var supportedCultures = new[] { new CultureInfo("fa"), new CultureInfo("en") };
+        //var options = new RequestLocalizationOptions
+        //{
+        //    DefaultRequestCulture = new RequestCulture("fa"),
+        //    SupportedCultures = supportedCultures,
+        //    SupportedUICultures = supportedCultures
+        //};
+        //options.RequestCultureProviders = new[] { new CookieRequestCultureProvider() };
+        //app.UseRequestLocalization(options);
+        var supportedCultures = new[] { "en", "fa" };
+
+        var localizationOptions = new RequestLocalizationOptions()
+            .SetDefaultCulture("fa")
+            .AddSupportedCultures(supportedCultures)
+            .AddSupportedUICultures(supportedCultures);
+
+        app.UseRequestLocalization(localizationOptions);
+
         app.UseSession();
         app.UseAuthorization();
 
