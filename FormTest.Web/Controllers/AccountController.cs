@@ -3,7 +3,6 @@ using FormTest.Core.Domain.Interfaces;
 using FormTest.Core.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using FormTest.Core.Application.Contracts;
-using Microsoft.Extensions.Localization;
 using System.ComponentModel.DataAnnotations;
 
 
