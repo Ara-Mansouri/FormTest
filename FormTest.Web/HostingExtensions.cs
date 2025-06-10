@@ -6,15 +6,24 @@ using FormTest.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
-using FormTest.Web.Services;
+using FormTest.Infrastructure.Services;
 using Microsoft.AspNetCore.Builder;
 
 public static class HostingExtensions
 {
     public static void ConfigureServices(this WebApplicationBuilder builder)
     {
-        builder.Services.AddLocalization(option => option.ResourcesPath = "Resources");
-        builder.Services.AddControllersWithViews().AddViewLocalization().AddDataAnnotationsLocalization();
+        var defaultCulture = new CultureInfo("fa");
+        CultureInfo.DefaultThreadCurrentCulture = defaultCulture;
+        CultureInfo.DefaultThreadCurrentUICulture = defaultCulture;
+
+        builder.Services.AddLocalization(options =>
+        {
+            options.ResourcesPath = "Resources"; // این مسیر باید با نام پوشه در پروژه Localization یکی باشه
+        });
+        builder.Services.AddControllersWithViews()
+               .AddViewLocalization()
+               .AddDataAnnotationsLocalization();
 
         builder.Services.AddSession();
 
@@ -22,14 +31,9 @@ public static class HostingExtensions
 
         builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-        builder.Services.AddLocalization(options =>
-        {
-            options.ResourcesPath = "Resources"; // این مسیر باید با نام پوشه در پروژه Localization یکی باشه
-        });
 
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<IUserService, UserService>();
-        builder.Services.AddSingleton<ILocalizationService, LocalizationService>();
 
 
     }

@@ -1,7 +1,7 @@
 ﻿using FormTest.Core.Application.Contracts;
 using Microsoft.Extensions.Localization;
 using FormTest.Localization.Resources;
-namespace FormTest.Web.Services
+namespace FormTest.Infrastructure.Services
 {
     public class LocalizationService : ILocalizationService
     {

@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FormTest.Core\FormTest.Core.csproj" />
+    <ProjectReference Include="..\Localization\Localization.csproj" />
   </ItemGroup>
 
 </Project>
