@@ -22,7 +22,6 @@
   <ItemGroup>
     <ProjectReference Include="..\FormTest.Core\FormTest.Core.csproj" />
     <ProjectReference Include="..\FormTest.Infrastructure\FormTest.Infrastructure.csproj" />
-    <ProjectReference Include="..\Localization\Localization.csproj" />
   </ItemGroup>
 
 </Project>
